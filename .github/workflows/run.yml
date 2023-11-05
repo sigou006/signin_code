@@ -41,7 +41,7 @@ jobs:
           echo "$OUTPUT"
 
       - name: Send mail [Optional]
-        if: env.USE_SMTP == 'true'
+        if: env.USE_SMTP == 'false'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: ${{ env.SMTP_SERVER }}
@@ -54,7 +54,7 @@ jobs:
           body: ${{ env.OUTPUT }}
 
       - name: ServerChan [Optional]
-        if: env.USE_SERVER == 'true'
+        if: env.USE_SERVER == 'false'
         uses: easychen/github-action-server-chan@v1.0.0
         with:
           sendkey: ${{ secrets.SENDKEY }}
@@ -62,7 +62,7 @@ jobs:
           desp: ${{ env.OUTPUT }}
           
       - name: TelegramBot [Optional]
-        if: env.USE_TELEGRAM == 'true'
+        if: env.USE_TELEGRAM == 'false'
         uses: appleboy/telegram-action@master
         with:
           token: 6401388840:AAEpl78y2DgzLL_JX5msJVovR2ALMq2WzP4
